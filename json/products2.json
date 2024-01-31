@@ -1,0 +1,35 @@
+[
+    {
+        "name":"Nitra Edge",
+        "price":1999,
+      
+      "image": "./images/one.webp"
+    },
+    {
+        "name":"Nitra Edge",
+        "price":1999,
+      "image": "./images/two.webp"
+    },
+    {
+        "name":"Nitra Edge",
+        "price":1999,  
+      
+      "image": "./images/one.webp"
+    },
+    {
+        "name":"Nitra Edge",
+        "price":1999,
+      "image": "./images/two.webp"
+    },
+    {
+        "name":"Nitra Edge",
+        "price":1999,
+      "image": "./images/two.webp"
+    },
+    {
+        "name":"Nitra Edge",
+        "price":1999,
+      "image": "./images/two.webp"
+    }
+  ]
+  

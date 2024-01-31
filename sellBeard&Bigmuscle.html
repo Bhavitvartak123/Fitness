@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Payment Integration</title>
+</head>
+<body>
+
+    <h1>Product Purchase</h1>
+
+    <button id="upi-payment-button">Pay with UPI</button>
+
+    <script>
+        document.getElementById('upi-payment-button').addEventListener('click', function () {
+            var upiId = 'rohitvm111@okicici'; // Replace with your actual UPI ID and bank details
+            var amount = '1.00'; // Replace with the actual amount
+
+            var upiUrl = 'upi://' +
+                'pay?pa=' + encodeURIComponent(upiId) +
+                '&pn=Recipient&mc=123&tid=123&tr=123&tn=Product Purchase&am=' + amount +
+                '&cu=INR&url=https://example.com/payment-response';
+
+            // Redirect the user to the UPI payment link
+            window.location.href = upiUrl;
+        });
+    </script>
+</body>
+</html>

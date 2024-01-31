@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cart</title>
+</head>
+<body>
+
+    <h1>Added values</h1>
+
+    <div id="cart-items"></div>
+
+    <a href="cart1.html">Back to Home </a>
+
+    <script>
+        function displayCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartItemsContainer = document.getElementById('cart-items');
+
+            // Display each item in the cart
+            cart.forEach(item => {
+                let itemDiv = document.createElement('div');
+                itemDiv.innerHTML = `
+                    <p>${item.name} - $${item.price} - Quantity: ${item.quantity}</p>
+                    <button onclick="incrementQuantity('${item.name}')">+</button>
+                    <button onclick="decrementQuantity('${item.name}')">-</button>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+        }
+
+        function incrementQuantity(productName) {
+            updateQuantity(productName, 1);
+        }
+
+        function decrementQuantity(productName) {
+            updateQuantity(productName, -1);
+        }
+
+        function updateQuantity(productName, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Find the product in the cart
+            let targetProduct = cart.find(item => item.name === productName);
+
+            if (targetProduct) {
+                // Update the quantity
+                targetProduct.quantity += change;
+
+                // Remove the item from the cart if the quantity becomes zero
+                if (targetProduct.quantity === 0) {
+                    cart = cart.filter(item => item.name !== productName);
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                // Refresh the cart display
+                document.getElementById('cart-items').innerHTML = '';
+                displayCart();
+            }
+        }
+
+        // Display the cart when the page loads
+        displayCart();
+    </script>
+
+</body>
+</html>
